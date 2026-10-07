@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Commission · Unseen</title>
+  <meta name="description" content="Commission a custom Unseen print: a ticket, coaster or card that comes alive when someone points a phone at it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="hub">
+  <header class="topbar">
+    <a class="mark" href="./">Unseen</a>
+    <nav>
+      <a href="./">Works</a>
+      <a href="custom.html" aria-current="page">Commission</a>
+    </nav>
+  </header>
+
+  <header class="hub-head">
+    <p class="eyebrow">Made to order</p>
+    <h1>A print with something hidden in it</h1>
+    <p class="lede">Tell me the object, the picture, and what should happen when someone points a phone at it. I design the print and the AR. Nothing to install.</p>
+  </header>
+
+  <section class="offers" aria-label="What you can order">
+    <a class="offer" href="try.html?case=ticket">
+      <img src="assets/thumb-ticket-marker.png" alt="" />
+      <div>
+        <h2>Ticket</h2>
+        <p>A character steps out in 3D. People can turn them and take a photo together.</p>
+      </div>
+    </a>
+    <a class="offer" href="try.html?case=tattoo">
+      <img src="assets/thumb-tattoo-marker.jpg" alt="" />
+      <div>
+        <h2>Coaster</h2>
+        <p>One object, many scenes. Turn it and the picture, the portfolio, or the story changes.</p>
+      </div>
+    </a>
+    <a class="offer" href="try.html?case=envelope">
+      <img src="assets/thumb-unseen-horse.jpg" alt="" />
+      <div>
+        <h2>Card</h2>
+        <p>A still picture that starts to move. Red envelopes, invitations, holiday cards.</p>
+      </div>
+    </a>
+  </section>
+
+  <form class="brief" id="brief">
+    <h2>Start a piece</h2>
+    <p class="lede">Each one is quoted on its own. I’ll reply with a proof you can try on your phone before anything is printed.</p>
+    <label>Name<input name="name" required autocomplete="name" /></label>
+    <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+    <label>Object
+      <select name="object" required>
+        <option value="Ticket">Ticket</option>
+        <option value="Coaster">Coaster</option>
+        <option value="Card">Card or red envelope</option>
+        <option value="Something else">Something else</option>
+      </select>
+    </label>
+    <label>What should happen when it’s scanned?<textarea name="story" required placeholder="A mascot steps out. A menu flips. A short film plays on a card."></textarea></label>
+    <label>Occasion, quantity, anything else<textarea name="notes" placeholder="A wedding, a shop, a run of 50…"></textarea></label>
+    <button class="btn primary" type="submit">Send the brief</button>
+    <p class="sent" id="sent" hidden>Your email app should open with the brief. If it doesn’t, write to <a href="mailto:yzhou80@sva.edu">yzhou80@sva.edu</a>.</p>
+    <p class="tips">Prefer to talk it through? <a href="https://calendly.com/rebecca-zyy103/30min" target="_blank" rel="noopener">Book a call</a>.</p>
+  </form>
+
+  <footer class="hub-foot">
+    <p class="copyright">© <span id="year">2026</span> <a href="https://www.yinyinzhou.com" target="_blank" rel="noopener">Yinyin Zhou</a>. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.getElementById('brief');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const object = data.get('object');
+      const body = [
+        `Name: ${data.get('name')}`,
+        `Email: ${data.get('email')}`,
+        `Object: ${object}`,
+        '',
+        'What should happen when it’s scanned?',
+        data.get('story'),
+        '',
+        'Notes:',
+        data.get('notes') || '—'
+      ].join('\n');
+      location.href = `mailto:yzhou80@sva.edu?subject=${encodeURIComponent('Unseen commission — ' + object)}&body=${encodeURIComponent(body)}`;
+      document.getElementById('sent').hidden = false;
+    });
+  </script>
+</body>
+</html>
