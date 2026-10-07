@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AR 案例试用 · Try the AR demos</title>
+  <meta name="description" content="印刷品 + 手机网页 AR。门票、杯垫、红包，不用下载 App，扫一下就能体验。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="hub">
+  <header class="hub-head">
+    <p class="eyebrow">Web AR · 不用下载 App</p>
+    <h1>扫一下，印刷品就活了</h1>
+    <p class="lede">门票、杯垫、红包，用手机浏览器打开就能看到 AR。<br><span class="en">Printed things that come alive in your phone's browser.</span></p>
+  </header>
+
+  <section class="how" aria-label="怎么试">
+    <div class="how-item">
+      <span class="num">1</span>
+      <div><b>在电脑上点「试用」</b><span>屏幕上会显示要扫的图案和一个二维码</span></div>
+    </div>
+    <div class="how-item">
+      <span class="num">2</span>
+      <div><b>手机扫二维码</b><span>用相机或微信扫，打开后允许使用相机</span></div>
+    </div>
+    <div class="how-item">
+      <span class="num">3</span>
+      <div><b>手机对准屏幕上的图案</b><span>离屏幕 30–50 厘米，屏幕亮度调高</span></div>
+    </div>
+  </section>
+
+  <p class="mobile-note" id="mobile-note">你在用手机。试用需要另一块屏幕来显示图案：可以把这一页发到电脑上打开，或者手里有实物的话，直接点「手机打开」。</p>
+
+  <main class="grid" id="grid"></main>
+
+  <footer class="hub-foot">
+    <p>所有案例都在手机浏览器里运行，不用安装 App。<span class="en">Runs in the mobile browser, no app needed.</span></p>
+  </footer>
+
+  <script src="cases.js"></script>
+  <script>
+    const isPhone = matchMedia('(pointer: coarse) and (max-width: 820px)').matches;
+    document.getElementById('mobile-note').hidden = !isPhone;
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+    document.getElementById('grid').innerHTML = window.AR_CASES.map(c => `
+      <article class="case">
+        <a class="case-art ${c.shape}" href="try.html?case=${c.id}" aria-label="试用 ${esc(c.title)}">
+          <img src="${c.thumb}" alt="" loading="lazy" />
+        </a>
+        <div class="case-body">
+          <div class="tags">${c.tags.map(t => `<span>${esc(t)}</span>`).join('')}${c.sound ? '<span>有声音</span>' : ''}</div>
+          <h2>${esc(c.title)}</h2>
+          <p class="en-title">${esc(c.en)}</p>
+          <p class="desc">${esc(c.desc)}</p>
+          <div class="case-actions">
+            <a class="btn primary" href="try.html?case=${c.id}">在电脑上试用</a>
+            <a class="btn" href="${c.url}" target="_blank" rel="noopener">手机打开</a>
+          </div>
+        </div>
+      </article>`).join('');
+  </script>
+</body>
+</html>
