@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>试用 · AR 案例</title>
+  <title>Try · Web AR Demos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="try">
-  <a class="back" href="./">‹ 全部案例</a>
+  <a class="back" href="./">‹ All demos</a>
 
   <div class="stage-wrap">
     <div class="stage" id="stage">
-      <img id="marker" alt="要扫的图案" draggable="false" />
+      <img id="marker" alt="Artwork to scan" draggable="false" />
     </div>
   </div>
 
@@ -24,20 +24,20 @@
     <p class="en-title" id="en"></p>
 
     <div class="qr-box">
-      <img id="qr" alt="用手机扫这个二维码" />
+      <img id="qr" alt="Scan this QR code with your phone" />
       <a id="open" class="qr-link" target="_blank" rel="noopener"></a>
     </div>
 
     <ol class="steps" id="steps"></ol>
 
     <div class="spin" id="spin" hidden>
-      <button class="btn primary" type="button" id="spin-btn">转起来</button>
-      <label class="speed"><span>慢</span><input id="speed" type="range" min="8" max="40" value="24" aria-label="转动速度" /><span>快</span></label>
+      <button class="btn primary" type="button" id="spin-btn">Spin</button>
+      <label class="speed"><span>Slow</span><input id="speed" type="range" min="8" max="40" value="24" aria-label="Spin speed" /><span>Fast</span></label>
     </div>
 
-    <p class="tips">识别不出来？把屏幕亮度调高，手机离屏幕 30–50 厘米，避免屏幕反光。</p>
+    <p class="tips">Not tracking? Turn screen brightness up, hold your phone 30–50 cm away, and avoid glare on the screen.</p>
 
-    <nav class="switch" id="switch" aria-label="其他案例"></nav>
+    <nav class="switch" id="switch" aria-label="Other demos"></nav>
   </aside>
 
   <script src="cases.js"></script>
@@ -48,12 +48,12 @@
     const $ = s => document.getElementById(s);
     const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
 
-    document.title = '试用 · ' + c.title;
+    document.title = 'Try · ' + c.title;
     $('stage').className = 'stage ' + c.shape;
     $('marker').src = c.marker;
-    $('tags').textContent = c.tags.concat(c.sound ? ['有声音'] : []).join(' · ');
+    $('tags').textContent = c.tags.concat(c.sound ? ['Sound on'] : []).join(' · ');
     $('title').textContent = c.title;
-    $('en').textContent = c.en;
+    $('en').textContent = c.sub;
     $('qr').src = c.qr;
     $('open').href = c.url;
     $('open').textContent = c.url.replace(/^https:\/\//, '').replace(/\/$/, '');
@@ -71,7 +71,7 @@
         const on = !marker.classList.contains('spinning') || marker.classList.contains('paused');
         if (!marker.classList.contains('spinning')) marker.classList.add('spinning');
         marker.classList.toggle('paused', !on);
-        btn.textContent = on ? '暂停' : '继续转';
+        btn.textContent = on ? 'Pause' : 'Resume';
       });
     }
   </script>

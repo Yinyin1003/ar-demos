@@ -1,56 +1,52 @@
 window.AR_CASES = [
   {
     id: "ticket",
-    title: "互动门票",
-    en: "Interactive Ticket",
-    desc: "对准门票上的角色，他会站出来。可以转动、移动，和他合影。",
-    descEn: "Aim at the character on the ticket. He steps out — rotate, move, and take a photo with him.",
-    tags: ["3D 角色", "合影"],
+    title: "Interactive Ticket",
+    sub: "Character ticket",
+    desc: "Aim at the character on the ticket and he steps out in 3D. Rotate him, move him, and take a photo together.",
+    tags: ["3D character", "Photo"],
     url: "https://ip-ticket.vercel.app/",
     qr: "assets/qr-ticket.png",
     marker: "assets/ticket-marker.jpg",
     thumb: "assets/thumb-ticket-marker.jpg",
     shape: "tall",
     spin: false,
-    steps: ["手机扫右边的二维码，点「开始」", "把手机对准左边的角色", "角色出来后，可以拖动旋转，再点拍照"]
+    steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the character on the left", "Drag to rotate him, then tap the shutter for a photo"]
   },
   {
     id: "tattoo",
-    title: "Zuzu Tattoo 杯垫",
-    en: "Zuzu Tattoo Coaster",
-    desc: "一个杯垫装下整本作品集。转动杯垫，纹身作品一张张换。",
-    descEn: "A whole tattoo portfolio in one coaster. Rotate it to flip through the works.",
-    tags: ["旋转切换", "作品集"],
+    title: "Zuzu Tattoo Coaster",
+    sub: "Portfolio coaster",
+    desc: "A whole tattoo portfolio in one coaster. Rotate it to flip through the works.",
+    tags: ["Rotate to switch", "Portfolio"],
     url: "https://zuzu-tattoo.vercel.app/",
     qr: "assets/qr-tattoo.png",
     marker: "assets/tattoo-marker.jpg",
     thumb: "assets/thumb-tattoo-marker.jpg",
     shape: "round",
     spin: true,
-    steps: ["手机扫右边的二维码，点 Continue", "把手机对准左边的杯垫", "点「转起来」，作品会跟着切换"]
+    steps: ["Scan the QR code with your phone and tap Continue", "Point your phone at the coaster on the left", "Press Spin — the works change as it turns"]
   },
   {
     id: "student",
-    title: "NOW WHAT? 毕业展杯垫",
-    en: "Thesis Exhibition Coaster",
-    desc: "MFA 毕业展的杯垫。转一转，看到每一位同学的头像和介绍。",
-    descEn: "The MFA thesis show coaster. Rotate it to meet each student.",
-    tags: ["旋转切换", "展览"],
+    title: "NOW WHAT? Coaster",
+    sub: "MFA thesis exhibition",
+    desc: "The coaster from the MFA thesis show. Rotate it to meet each student, one by one.",
+    tags: ["Rotate to switch", "Exhibition"],
     url: "https://student-theta-eight.vercel.app/",
     qr: "assets/qr-student.png",
     marker: "assets/student-marker.jpg",
     thumb: "assets/thumb-student-marker.jpg",
     shape: "round",
     spin: true,
-    steps: ["手机扫右边的二维码，点 Start", "把手机对准左边的杯垫", "点「转起来」，同学会一个个换"]
+    steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the coaster on the left", "Press Spin — a new student appears as it turns"]
   },
   {
     id: "imagine",
-    title: "Strawberry Fields 杯垫",
-    en: "Unseen Stories · Imagine",
-    desc: "中央公园 Strawberry Fields 的故事。转动杯垫，换一段声音。",
-    descEn: "Stories from Strawberry Fields, Central Park. Rotate the coaster to change the voice.",
-    tags: ["旋转切换", "故事"],
+    title: "Strawberry Fields Coaster",
+    sub: "Unseen Stories · Imagine",
+    desc: "Stories from Strawberry Fields in Central Park. Rotate the coaster to hear a different voice.",
+    tags: ["Rotate to switch", "Stories"],
     url: "https://unseenstories.vercel.app/",
     qr: "assets/qr-unseen.png",
     marker: "assets/unseen-imagine.jpg",
@@ -58,15 +54,14 @@ window.AR_CASES = [
     shape: "round",
     spin: true,
     sound: true,
-    steps: ["手机扫右边的二维码，点 Start", "把手机对准左边的杯垫，打开声音", "点「转起来」，声音会换一段"]
+    steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the coaster and turn your sound on", "Press Spin — the story changes as it turns"]
   },
   {
     id: "envelope",
-    title: "红包 · 马上有钱花",
-    en: "Red Envelope",
-    desc: "对准红包上的小马，红包上的画面会动起来。",
-    descEn: "Aim at the pony on the red envelope and watch it come alive.",
-    tags: ["视频", "节日"],
+    title: "Red Envelope",
+    sub: "Lunar New Year",
+    desc: "Aim at the pony on the red envelope and watch the picture come alive.",
+    tags: ["Video", "Holiday"],
     url: "https://unseenstories.vercel.app/",
     qr: "assets/qr-unseen.png",
     marker: "assets/unseen-horse.jpg",
@@ -74,6 +69,6 @@ window.AR_CASES = [
     shape: "square",
     spin: false,
     sound: true,
-    steps: ["手机扫右边的二维码，点 Start", "把手机对准左边的小马", "打开声音，看它动起来"]
+    steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the pony on the left", "Turn your sound on and watch it move"]
   }
 ];
