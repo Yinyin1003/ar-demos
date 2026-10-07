@@ -66,7 +66,6 @@ window.AR_CASES = [
     qr: "assets/qr-unseen.png",
     marker: "assets/unseen-horse.jpg",
     thumb: "assets/thumb-unseen-horse.jpg",
-    anim: "assets/envelope-anim.mp4",
     shape: "envelope",
     spin: false,
     sound: true,

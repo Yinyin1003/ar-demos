@@ -30,11 +30,6 @@
 
     <ol class="steps" id="steps"></ol>
 
-    <div class="preview" id="preview" hidden>
-      <p class="eyebrow">What you'll see</p>
-      <video id="preview-video" autoplay muted loop playsinline></video>
-    </div>
-
     <div class="spin" id="spin" hidden>
       <button class="btn" type="button" id="spin-btn">Pause</button>
       <label class="speed"><span>Slow</span><input id="speed" type="range" min="8" max="40" value="24" aria-label="Spin speed" /><span>Fast</span></label>
@@ -75,11 +70,6 @@
     $('open').textContent = c.url.replace(/^https:\/\//, '').replace(/\/$/, '');
     $('steps').innerHTML = c.steps.map(s => `<li>${esc(s)}</li>`).join('');
     $('switch').innerHTML = cases.filter(x => x.id !== c.id).map(x => `<a href="try.html?case=${x.id}">${esc(x.title)}</a>`).join('');
-
-    if (c.anim) {
-      $('preview').hidden = false;
-      $('preview-video').src = c.anim;
-    }
 
     if (c.spin) {
       $('spin').hidden = false;
