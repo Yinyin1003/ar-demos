@@ -29,22 +29,22 @@
     <a class="offer" href="try.html?case=ticket">
       <img src="assets/thumb-ticket-marker.png" alt="" />
       <div>
-        <h2>Ticket</h2>
-        <p>A character steps out in 3D. People can turn them and take a photo together.</p>
+        <h2>3D model</h2>
+        <p>A character steps out of the print. Turn them, move them, and take a photo together.</p>
       </div>
     </a>
     <a class="offer" href="try.html?case=tattoo">
       <img src="assets/thumb-tattoo-marker.jpg" alt="" />
       <div>
-        <h2>Coaster</h2>
-        <p>One object, many scenes. Turn it and the picture, the portfolio, or the story changes.</p>
+        <h2>Picture</h2>
+        <p>Still images that change as the object turns. A portfolio, a set of portraits, a story.</p>
       </div>
     </a>
     <a class="offer" href="try.html?case=envelope">
       <img src="assets/thumb-unseen-horse.jpg" alt="" />
       <div>
-        <h2>Card</h2>
-        <p>A still picture that starts to move. Red envelopes, invitations, holiday cards.</p>
+        <h2>Video</h2>
+        <p>A still picture that starts to play, with sound. Cards, invitations, red envelopes.</p>
       </div>
     </a>
   </section>
@@ -54,12 +54,11 @@
     <p class="lede">Each one is quoted on its own. I’ll reply with a proof you can try on your phone before anything is printed.</p>
     <label>Name<input name="name" required autocomplete="name" /></label>
     <label>Email<input name="email" type="email" required autocomplete="email" /></label>
-    <label>Object
+    <label>What appears
       <select name="object" required>
-        <option value="Ticket">Ticket</option>
-        <option value="Coaster">Coaster</option>
-        <option value="Card">Card or red envelope</option>
-        <option value="Something else">Something else</option>
+        <option value="3D model">3D model</option>
+        <option value="Picture">Picture</option>
+        <option value="Video">Video</option>
       </select>
     </label>
     <label>What should happen when it’s scanned?<textarea name="story" required placeholder="A mascot steps out. A menu flips. A short film plays on a card."></textarea></label>
@@ -83,7 +82,7 @@
       const body = [
         `Name: ${data.get('name')}`,
         `Email: ${data.get('email')}`,
-        `Object: ${object}`,
+        `What appears: ${object}`,
         '',
         'What should happen when it’s scanned?',
         data.get('story'),

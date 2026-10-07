@@ -20,9 +20,9 @@
   </header>
 
   <header class="hub-head">
-    <p class="eyebrow">Prints that come alive</p>
-    <h1>Scan it, and print comes alive</h1>
-    <p class="lede">Tickets, coasters and cards with a story hidden in the print. No app — it opens in the phone's browser.</p>
+    <p class="eyebrow">Tickets, coasters, cards</p>
+    <h1>Scan it with your phone</h1>
+    <p class="lede">A 3D model, a picture, or a video shows up in the browser. Nothing to install.</p>
     <div class="hub-cta">
       <a class="btn primary" href="custom.html">Commission a piece</a>
     </div>
@@ -30,6 +30,7 @@
 
   <p class="mobile-note" id="mobile-note">You're on a phone. These pieces need a computer screen to show the artwork — open this page on a computer.</p>
 
+  <div class="filters" id="filters" role="tablist" aria-label="Kind of piece"></div>
   <main class="grid" id="grid"></main>
 
   <footer class="hub-foot">
@@ -43,7 +44,15 @@
     const isPhone = matchMedia('(pointer: coarse) and (max-width: 820px)').matches;
     document.getElementById('mobile-note').hidden = !isPhone;
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
-    document.getElementById('grid').innerHTML = window.AR_CASES.map(c => `
+    const kinds = [
+      ['all', 'All'],
+      ['model', '3D model'],
+      ['picture', 'Picture'],
+      ['video', 'Video']
+    ];
+    const filters = document.getElementById('filters');
+    const grid = document.getElementById('grid');
+    const card = c => `
       <article class="case">
         <a class="case-art ${c.shape}" href="try.html?case=${c.id}" aria-label="Try ${esc(c.title)}">
           <img src="${c.thumb}" alt="" loading="lazy" />
@@ -57,7 +66,20 @@
             <a class="btn primary" href="try.html?case=${c.id}">Try on computer</a>
           </div>
         </div>
-      </article>`).join('');
+      </article>`;
+    function show(kind) {
+      filters.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.kind === kind)));
+      const list = window.AR_CASES.filter(c => kind === 'all' || c.kind === kind);
+      grid.innerHTML = list.map(card).join('');
+    }
+    filters.innerHTML = kinds.map(([id, label], i) =>
+      `<button type="button" role="tab" data-kind="${id}" aria-pressed="${i === 0}">${label}</button>`
+    ).join('');
+    filters.addEventListener('click', (event) => {
+      const button = event.target.closest('button');
+      if (button) show(button.dataset.kind);
+    });
+    show('all');
   </script>
 </body>
 </html>

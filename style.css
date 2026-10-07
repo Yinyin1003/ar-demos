@@ -161,6 +161,29 @@ a { color: inherit; }
 .case .desc { font-size: 14px; line-height: 1.65; color: rgba(242, 235, 227, 0.82); flex: 1; margin-top: 6px; }
 .case-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
 
+.filters {
+  max-width: 1120px;
+  margin: 0 auto 22px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filters button {
+  font: 500 13px/1 var(--sans);
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.filters button[aria-pressed="true"] {
+  background: var(--paper);
+  color: #14110f;
+  border-color: var(--paper);
+}
+
 .hub-foot { max-width: 960px; margin: 48px auto 0; text-align: center; font-size: 13px; color: var(--muted); line-height: 1.8; }
 .hub-foot .en { display: block; }
 
@@ -380,6 +403,15 @@ a { color: inherit; }
   font: 400 15px/1.45 var(--sans);
 }
 .brief textarea { min-height: 120px; resize: vertical; }
+.brief select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 48px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 6.2L8 10.6L12.5 6.2' stroke='%23f2ebe3' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 16px 16px;
+}
 .brief .btn { align-self: flex-start; margin-top: 4px; }
 .sent { font-size: 14px; line-height: 1.6; color: var(--paper); }
 
