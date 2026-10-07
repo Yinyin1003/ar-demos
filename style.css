@@ -200,6 +200,18 @@ a { color: inherit; }
   grid-template-columns: minmax(0, 1fr) 380px;
 }
 
+.try-nav {
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.try-nav .back { position: static; }
+.try-nav .mark { font-size: 18px; letter-spacing: 0.14em; }
+
 .back {
   position: fixed;
   top: 18px;
