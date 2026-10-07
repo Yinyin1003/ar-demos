@@ -63,8 +63,10 @@
     </label>
     <label>What should happen when it’s scanned?<textarea name="story" required placeholder="A mascot steps out. A menu flips. A short film plays on a card."></textarea></label>
     <label>Occasion, quantity, anything else<textarea name="notes" placeholder="A wedding, a shop, a run of 50…"></textarea></label>
+    <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
     <button class="btn primary" type="submit">Send the brief</button>
-    <p class="sent" id="sent" hidden>Your email app should open with the brief. If it doesn’t, write to <a href="mailto:yzhou80@sva.edu">yzhou80@sva.edu</a>.</p>
+    <p class="sent" id="sent" hidden>Sent. I’ll reply to the email you entered.</p>
+    <p class="sent" id="send-error" hidden>Couldn’t send it. Try again in a moment.</p>
     <p class="tips">Prefer to talk it through? <a href="https://calendly.com/rebecca-zyy103/30min" target="_blank" rel="noopener">Book a call</a>.</p>
   </form>
 
@@ -75,23 +77,41 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     const form = document.getElementById('brief');
-    form.addEventListener('submit', (event) => {
+    const button = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (form._honey.value) return;
       const data = new FormData(form);
       const object = data.get('object');
-      const body = [
-        `Name: ${data.get('name')}`,
-        `Email: ${data.get('email')}`,
-        `What appears: ${object}`,
-        '',
-        'What should happen when it’s scanned?',
-        data.get('story'),
-        '',
-        'Notes:',
-        data.get('notes') || '—'
-      ].join('\n');
-      location.href = `mailto:yzhou80@sva.edu?subject=${encodeURIComponent('Unseen commission — ' + object)}&body=${encodeURIComponent(body)}`;
-      document.getElementById('sent').hidden = false;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      document.getElementById('send-error').hidden = true;
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/rebecca.zyy103@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name: data.get('name'),
+            email: data.get('email'),
+            _replyto: data.get('email'),
+            _subject: 'Unseen commission — ' + object,
+            _template: 'table',
+            _captcha: 'false',
+            'What appears': object,
+            'What should happen when scanned': data.get('story'),
+            Notes: data.get('notes') || '—'
+          })
+        });
+        const json = await res.json();
+        if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'send failed');
+        form.reset();
+        document.getElementById('sent').hidden = false;
+        button.hidden = true;
+      } catch (err) {
+        document.getElementById('send-error').hidden = false;
+        button.disabled = false;
+        button.textContent = 'Send the brief';
+      }
     });
   </script>
 </body>
