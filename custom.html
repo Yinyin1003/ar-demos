@@ -65,10 +65,14 @@
     <label>Occasion, quantity, anything else<textarea name="notes" placeholder="A wedding, a shop, a run of 50…"></textarea></label>
     <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
     <button class="btn primary" type="submit">Send the brief</button>
-    <p class="sent" id="sent" hidden>Sent. I’ll reply to the email you entered.</p>
     <p class="sent" id="send-error" hidden>Couldn’t send it. Try again in a moment.</p>
     <p class="tips">Prefer to talk it through? <a href="https://calendly.com/rebecca-zyy103/30min" target="_blank" rel="noopener">Book a call</a>.</p>
   </form>
+
+  <div class="thanks" id="thanks" hidden>
+    <h2>Thank you</h2>
+    <p class="lede">I’ll get back to you within 24 hours.</p>
+  </div>
 
   <footer class="hub-foot">
     <p class="copyright">© <span id="year">2026</span> <a href="https://www.yinyinzhou.com" target="_blank" rel="noopener">Yinyin Zhou</a>. All rights reserved.</p>
@@ -104,9 +108,10 @@
         });
         const json = await res.json();
         if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'send failed');
-        form.reset();
-        document.getElementById('sent').hidden = false;
-        button.hidden = true;
+        form.hidden = true;
+        const thanks = document.getElementById('thanks');
+        thanks.hidden = false;
+        thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } catch (err) {
         document.getElementById('send-error').hidden = false;
         button.disabled = false;

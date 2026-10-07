@@ -413,6 +413,12 @@ a { color: inherit; }
   background-size: 16px 16px;
 }
 .brief .btn { align-self: flex-start; margin-top: 4px; }
+.thanks {
+  max-width: 640px;
+  margin: 56px auto 0;
+  text-align: center;
+}
+.thanks h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(36px, 5vw, 52px); }
 .brief .btn:disabled { opacity: 0.6; cursor: wait; }
 .honey { position: absolute; left: -9999px; height: 0; width: 0; opacity: 0; }
 .sent { font-size: 14px; line-height: 1.6; color: var(--paper); }
