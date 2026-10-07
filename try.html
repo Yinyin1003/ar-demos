@@ -36,7 +36,7 @@
     </div>
 
     <div class="spin" id="spin" hidden>
-      <button class="btn primary" type="button" id="spin-btn">Spin</button>
+      <button class="btn" type="button" id="spin-btn">Pause</button>
       <label class="speed"><span>Slow</span><input id="speed" type="range" min="8" max="40" value="24" aria-label="Spin speed" /><span>Fast</span></label>
     </div>
 
@@ -77,6 +77,8 @@
       const setSpeed = () => document.documentElement.style.setProperty('--spin-duration', (48 - Number($('speed').value)) + 's');
       setSpeed();
       $('speed').addEventListener('input', setSpeed);
+      marker.classList.add('spinning');
+      btn.textContent = 'Pause';
       btn.addEventListener('click', () => {
         const on = !marker.classList.contains('spinning') || marker.classList.contains('paused');
         if (!marker.classList.contains('spinning')) marker.classList.add('spinning');

@@ -7,8 +7,8 @@ window.AR_CASES = [
     tags: ["3D character", "Photo"],
     url: "https://ip-ticket.vercel.app/",
     qr: "assets/qr-ticket.png",
-    marker: "assets/ticket-marker.jpg",
-    thumb: "assets/thumb-ticket-marker.jpg",
+    marker: "assets/ticket-marker.png",
+    thumb: "assets/thumb-ticket-marker.png",
     shape: "tall",
     spin: false,
     steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the character on the left", "Drag to rotate him, then tap the shutter for a photo"]
@@ -25,7 +25,7 @@ window.AR_CASES = [
     thumb: "assets/thumb-tattoo-marker.jpg",
     shape: "round",
     spin: true,
-    steps: ["Scan the QR code with your phone and tap Continue", "Point your phone at the coaster on the left", "Press Spin — the works change as it turns"]
+    steps: ["Scan the QR code with your phone and tap Continue", "Point your phone at the coaster on the left", "It spins on its own — the works change as it turns"]
   },
   {
     id: "student",
@@ -39,7 +39,7 @@ window.AR_CASES = [
     thumb: "assets/thumb-student-marker.png",
     shape: "round",
     spin: true,
-    steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the coaster on the left", "Press Spin — a new student appears as it turns"]
+    steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the coaster on the left", "It spins on its own — a new student appears as it turns"]
   },
   {
     id: "imagine",
@@ -54,7 +54,7 @@ window.AR_CASES = [
     shape: "round",
     spin: true,
     sound: true,
-    steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the coaster and turn your sound on", "Press Spin — the story changes as it turns"]
+    steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the coaster and turn your sound on", "It spins on its own — the story changes as it turns"]
   },
   {
     id: "envelope",
