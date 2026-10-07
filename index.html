@@ -38,10 +38,12 @@
 
   <footer class="hub-foot">
     <p>Every demo runs in the mobile browser. Nothing to install.</p>
+    <p class="copyright">© <span id="year">2026</span> <a href="https://www.yinyinzhou.com" target="_blank" rel="noopener">Yinyin Zhou</a>. All rights reserved.</p>
   </footer>
 
   <script src="cases.js"></script>
   <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
     const isPhone = matchMedia('(pointer: coarse) and (max-width: 820px)').matches;
     document.getElementById('mobile-note').hidden = !isPhone;
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));

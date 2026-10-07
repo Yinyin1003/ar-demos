@@ -43,10 +43,13 @@
     <p class="tips">Not tracking? Turn screen brightness up, hold your phone 30–50 cm away, and avoid glare on the screen.</p>
 
     <nav class="switch" id="switch" aria-label="Other demos"></nav>
+
+    <p class="copyright">© <span id="year">2026</span> <a href="https://www.yinyinzhou.com" target="_blank" rel="noopener">Yinyin Zhou</a>. All rights reserved.</p>
   </aside>
 
   <script src="cases.js"></script>
   <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
     const cases = window.AR_CASES;
     const id = new URLSearchParams(location.search).get('case');
     const c = cases.find(x => x.id === id) || cases[0];

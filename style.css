@@ -168,6 +168,11 @@ a { color: inherit; }
 .hub-foot { max-width: 960px; margin: 48px auto 0; text-align: center; font-size: 13px; color: var(--muted); line-height: 1.8; }
 .hub-foot .en { display: block; }
 
+.copyright { font-size: 12px; color: var(--muted); }
+.copyright a { color: var(--paper); text-decoration: underline; text-decoration-color: rgba(242, 235, 227, 0.35); text-underline-offset: 3px; }
+.copyright a:hover { text-decoration-color: var(--paper); }
+.hub-foot .copyright { margin-top: 10px; }
+
 /* ---------- try */
 
 .try {
