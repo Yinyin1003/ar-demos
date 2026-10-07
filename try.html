@@ -59,6 +59,14 @@
     document.title = 'Try · ' + c.title;
     $('stage').className = 'stage ' + c.shape;
     $('marker').src = c.marker;
+    if (c.shape === 'envelope') {
+      const env = document.createElement('div');
+      env.className = 'red-envelope';
+      env.innerHTML = '<div class="flap" aria-hidden="true"><span class="seal">福</span></div>';
+      const img = $('marker');
+      img.replaceWith(env);
+      env.appendChild(img);
+    }
     $('tags').textContent = c.tags.concat(c.sound ? ['Sound on'] : []).join(' · ');
     $('title').textContent = c.title;
     $('en').textContent = c.sub;

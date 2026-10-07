@@ -67,7 +67,7 @@ window.AR_CASES = [
     marker: "assets/unseen-horse.jpg",
     thumb: "assets/thumb-unseen-horse.jpg",
     anim: "assets/envelope-anim.mp4",
-    shape: "square",
+    shape: "envelope",
     spin: false,
     sound: true,
     steps: ["Scan the QR code with your phone and tap Start", "Point your phone at the pony on the left", "Turn your sound on and watch it move"]

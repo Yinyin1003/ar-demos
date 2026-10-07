@@ -214,6 +214,52 @@ a { color: inherit; }
 .stage.square img { width: min(72vh, 58vw, 600px); border-radius: 8px; }
 .stage.tall img { height: min(76vh, 800px); max-width: 58vw; }
 
+.red-envelope {
+  --red: #a52e2a;
+  width: min(54vh, 40vw, 440px);
+  background: var(--red);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 6px var(--red), inset 0 0 0 7.5px rgba(232, 190, 92, 0.75), 0 24px 60px rgba(0, 0, 0, 0.6);
+  padding-bottom: 7%;
+  display: flex;
+  flex-direction: column;
+}
+.red-envelope .flap {
+  position: relative;
+  aspect-ratio: 100 / 38;
+}
+.red-envelope .flap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #7f1f1c, #922622);
+  clip-path: polygon(0 0, 100% 0, 100% 34%, 50% 100%, 0 34%);
+}
+.red-envelope .flap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(232, 190, 92, 0.7);
+  clip-path: polygon(0 34%, 50% 100%, 100% 34%, 100% calc(34% + 1.5px), 50% calc(100% + 1.5px), 0 calc(34% + 1.5px));
+}
+.red-envelope .seal {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  width: 19%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, #f6dc8c, #d9a83c 60%, #b8862a);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35), inset 0 0 0 2px rgba(255, 240, 200, 0.5);
+  color: #a52e2a;
+  font: 700 clamp(16px, 2.6vw, 30px)/1 "Songti SC", "Noto Serif SC", serif;
+}
+.stage .red-envelope img { width: 100%; height: auto; border-radius: 0; }
+
 .stage img.spinning { animation: spin var(--spin-duration) linear infinite; will-change: transform; }
 .stage img.paused { animation-play-state: paused; }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -302,5 +348,6 @@ a { color: inherit; }
   .stage.round img { width: min(86vw, 520px); }
   .stage.square img { width: min(86vw, 520px); }
   .stage.tall img { height: auto; width: min(70vw, 360px); max-width: none; }
+  .red-envelope { width: min(78vw, 400px); }
   .panel { border-left: 0; border-top: 1px solid var(--line); max-height: none; position: static; padding-top: 28px; }
 }
