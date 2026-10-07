@@ -47,8 +47,10 @@
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
     document.getElementById('grid').innerHTML = window.AR_CASES.map(c => `
       <article class="case">
-        <a class="case-art ${c.shape}" href="try.html?case=${c.id}" aria-label="Try ${esc(c.title)}">
-          <img src="${c.thumb}" alt="" loading="lazy" />
+        <a class="case-art ${c.shape}${c.anim ? ' anim' : ''}" href="try.html?case=${c.id}" aria-label="Try ${esc(c.title)}">
+          ${c.anim
+            ? `<video src="${c.anim}" poster="${c.thumb}" autoplay muted loop playsinline preload="auto"></video>`
+            : `<img src="${c.thumb}" alt="" loading="lazy" />`}
         </a>
         <div class="case-body">
           <div class="tags">${c.tags.map(t => `<span>${esc(t)}</span>`).join('')}${c.sound ? '<span>Sound on</span>' : ''}</div>
