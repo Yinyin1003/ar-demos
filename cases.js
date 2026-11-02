@@ -6,7 +6,7 @@ window.AR_CASES = [
     desc: "Aim at the character on the ticket and he steps out in 3D. Rotate him, move him, and take a photo together.",
     kind: "model",
     tags: ["3D model", "Photo"],
-    url: "https://ip-ticket.vercel.app/",
+    url: "https://huangxi-ticket.vercel.app/",
     qr: "assets/qr-ticket.png",
     marker: "assets/ticket-marker.png",
     thumb: "assets/thumb-ticket-marker.png",
